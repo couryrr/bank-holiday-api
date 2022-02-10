@@ -18,3 +18,12 @@ Upcoming additions add
 - Look up European Holidays
 - Store the env settings better
      
+
+
+Lessons Learned
+- When using docker the port that the docker container uses is the actual port not the forwarded
+    - 13306:3306 
+    - MySql workbench uses 13306 on my local
+    - Spring boot application in docker uses 3306 for the connection string
+- Redis cache set up annotation is per method so the cache name should be unique
+- Seems like all of spring boots applications get written in the compose or docker file.
