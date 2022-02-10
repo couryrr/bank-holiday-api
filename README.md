@@ -8,6 +8,13 @@ MySql is running on port 13306
 
 Upcoming additions add
 
-- Add docker-compose
 - Persist MySql data
+- Persist redis cache
+- Setup job for getting data
+  - Wired in needs to check existing data before saving
+- Fix tests
+  - package fails because the conf is looking for mysql and redis
 - Look up Canadian Holidays
+- Look up European Holidays
+- Store the env settings better
+     
