@@ -27,22 +27,19 @@ public class UnitedStatesHolidayApiController {
   @Autowired
   UnitedStatesHolidayRepo repo;
 
-  Logger logger = LoggerFactory.getLogger(UnitedStatesHolidayApiController.class);
+  @Autowired
+  UnitedStatesHolidayService service;
 
+  Logger logger = LoggerFactory.getLogger(UnitedStatesHolidayApiController.class);
 
   @GetMapping("/id/{id}")
   @Cacheable(value = "UnitedStatesFederalHolidayByIdCache")
   public HolidayResponse getById(@PathVariable Integer id) {
     var optional = repo.findById(id);
-    var holiday = new Holiday();
+
     var response = new HolidayResponse();
     if (optional.isPresent()) {
-      var entity = optional.get();
-      holiday.setId(entity.getId());
-      holiday.setName(entity.getHolidayName());
-      holiday.setDate(entity.getHolidayDate());
-      holiday.setYear(entity.getHolidayYear());
-      response.setHolidays(Arrays.asList(holiday));
+      response.setHolidays(Arrays.asList(service.map(optional.get())));
     } else {
       response.setMessage("No element exists for id: " + id);
     }
@@ -57,18 +54,7 @@ public class UnitedStatesHolidayApiController {
 
     var response = new HolidayResponse();
     if (optional.isPresent()) {
-      var entities = optional.get();
-      var holidays = entities.stream().map(it -> {
-        var holiday = new Holiday();
-        holiday.setId(it.getId());
-        holiday.setName(it.getHolidayName());
-        holiday.setDate(it.getHolidayDate());
-        holiday.setYear(it.getHolidayYear());
-        return holiday;
-      })
-      .collect(Collectors.toList());
-
-      response.setHolidays(holidays);
+      response.setHolidays(service.map(optional.get()));
     } else {
       response.setMessage("No element exists for id: " + year);
     }
@@ -83,18 +69,7 @@ public class UnitedStatesHolidayApiController {
 
     var response = new HolidayResponse();
     if (optional.isPresent()) {
-      var entities = optional.get();
-      var holidays = entities.stream().map(it -> {
-        var holiday = new Holiday();
-        holiday.setId(it.getId());
-        holiday.setName(it.getHolidayName());
-        holiday.setDate(it.getHolidayDate());
-        holiday.setYear(it.getHolidayYear());
-        return holiday;
-      })
-      .collect(Collectors.toList());
-
-      response.setHolidays(holidays);
+      response.setHolidays(service.map(optional.get()));
     } else {
       response.setMessage("No element exists for id: " + name);
     }

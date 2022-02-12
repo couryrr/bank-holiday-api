@@ -27,3 +27,4 @@ Lessons Learned
     - Spring boot application in docker uses 3306 for the connection string
 - Redis cache set up annotation is per method so the cache name should be unique
 - Seems like all of spring boots applications get written in the compose or docker file.
+- Mockito mock is not used to create dummy data :( cannot find a good way to do that yet.
