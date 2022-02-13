@@ -52,7 +52,7 @@ that existing test suite is complicated based on the fact that no time is dedica
 to that. Developers just know that we have to test our code and that code coverage
 has to be > 70...80%.
 
-With this project so far I have been able to take really understand what I am trying
+With this project I have been able to take time to really understand what I am trying
 to test. There are ways to make sure your code is testable and to make sure your
 tests are fast.
 
