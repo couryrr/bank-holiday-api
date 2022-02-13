@@ -1,4 +1,4 @@
-package com.dappercloud.bankholiday.unitedstatesholiday;
+package com.dappercloud.bankholiday.bankholiday.unitedstatesholiday;
 
 
 import com.dappercloud.bankholiday.common.Holiday;
@@ -32,6 +32,13 @@ public class UnitedStatesHolidayApiController {
 
   Logger logger = LoggerFactory.getLogger(UnitedStatesHolidayApiController.class);
 
+  public UnitedStatesHolidayApiController(UnitedStatesHolidayRepo repo,
+      UnitedStatesHolidayService service){
+    this.repo = repo;
+    this.service = service;
+  }
+
+
   @GetMapping("/id/{id}")
   @Cacheable(value = "UnitedStatesFederalHolidayByIdCache")
   public HolidayResponse getById(@PathVariable Integer id) {
@@ -56,7 +63,7 @@ public class UnitedStatesHolidayApiController {
     if (optional.isPresent()) {
       response.setHolidays(service.map(optional.get()));
     } else {
-      response.setMessage("No element exists for id: " + year);
+      response.setMessage("No element exists for year: " + year);
     }
 
     return response;
@@ -71,7 +78,7 @@ public class UnitedStatesHolidayApiController {
     if (optional.isPresent()) {
       response.setHolidays(service.map(optional.get()));
     } else {
-      response.setMessage("No element exists for id: " + name);
+      response.setMessage("No element exists for name: " + name);
     }
 
     return response;

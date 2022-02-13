@@ -1,4 +1,4 @@
-package com.dappercloud.bankholiday.unitedstatesholiday;
+package com.dappercloud.bankholiday.bankholiday.unitedstatesholiday;
 
 import java.time.LocalDate;
 import javax.persistence.Entity;
