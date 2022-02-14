@@ -24,15 +24,18 @@ Run http://localhost:8080/bank-holiday-api/fetch-data to seed the database.
 - Persist MySql data
 - Persist redis cache
   - Set some ttl
+  - Actually setup a user
 - Setup job for getting data
   - Wired in needs to check existing data before saving
   - Use a message queue
   - Clear cache data if fetching writes something
 - Understand SpringBootTest better
-- Look up Canadian Holidays
-- Look up European Holidays
+- Look up 
+  - Canadian Holidays
+  - European Holidays
 - Store the env settings better
 - Swagger :upside_down_face:
+- GitHub Actions
 
 ## Lessons Learned
 - When using docker the port that the docker container uses is the actual port not the forwarded

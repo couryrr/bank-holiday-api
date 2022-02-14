@@ -1,4 +1,4 @@
-package com.dappercloud.bankholiday.bankholiday.unitedstatesholiday;
+package com.dappercloud.bankholiday.unitedstatesholiday;
 
 import com.dappercloud.bankholiday.common.Holiday;
 import java.util.List;

@@ -1,7 +1,7 @@
 package com.dappercloud.bankholiday.unittest.unitedstatesholiday;
 
-import com.dappercloud.bankholiday.bankholiday.unitedstatesholiday.UnitedStatesHolidayEntity;
-import com.dappercloud.bankholiday.bankholiday.unitedstatesholiday.UnitedStatesHolidayService;
+import com.dappercloud.bankholiday.unitedstatesholiday.UnitedStatesHolidayEntity;
+import com.dappercloud.bankholiday.unitedstatesholiday.UnitedStatesHolidayService;
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.HashMap;

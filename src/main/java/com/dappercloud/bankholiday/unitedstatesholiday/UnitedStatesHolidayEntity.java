@@ -1,4 +1,4 @@
-package com.dappercloud.bankholiday.bankholiday.unitedstatesholiday;
+package com.dappercloud.bankholiday.unitedstatesholiday;
 
 import java.time.LocalDate;
 import javax.persistence.Entity;
@@ -17,6 +17,7 @@ public class UnitedStatesHolidayEntity {
   private String holidayName;
   private LocalDate holidayDate;
   private Integer holidayYear;
+  private String hash;
 
   public Integer getId() {
     return id;
@@ -48,5 +49,13 @@ public class UnitedStatesHolidayEntity {
 
   public void setHolidayYear(Integer holidayYear) {
     this.holidayYear = holidayYear;
+  }
+
+  public String getHash() {
+    return hash;
+  }
+
+  public void setHash(String hash) {
+    this.hash = hash;
   }
 }

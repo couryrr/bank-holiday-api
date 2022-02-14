@@ -1,4 +1,4 @@
-package com.dappercloud.bankholiday.bankholiday.unitedstatesholiday;
+package com.dappercloud.bankholiday.unitedstatesholiday;
 
 
 import java.util.List;
@@ -11,4 +11,6 @@ public interface UnitedStatesHolidayRepo extends
   Optional<List<UnitedStatesHolidayEntity>> findByHolidayYear(Integer year);
 
   Optional<List<UnitedStatesHolidayEntity>> findByHolidayName(String name);
+
+  Optional<UnitedStatesHolidayEntity> findByHash(String hash);
 }

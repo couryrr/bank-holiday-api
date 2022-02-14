@@ -8,3 +8,7 @@ CREATE TABLE IF NOT EXISTS united_states(
    holiday_year INT NOT NULL,
    PRIMARY KEY ( id )
 );
+
+--changeset couryrr:00002
+ALTER TABLE united_states
+ADD COLUMN hash VARCHAR(32);
