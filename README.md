@@ -1,21 +1,28 @@
 # bank-holiday-api
 
 An instance of redis is needed you can run
-> docker run --name bankholiday_redis -p 6379:6379 -d --rm redis:6.2-alpine
-
+```
+docker run --name bankholiday_redis -p 6379:6379 -d --rm redis:6.2-alpine
+```
 MySql is running on port 13306
-> docker run --name bankholiday_mysql -e MYSQL_DATABASE=bank_holiday -e MYSQL_ALLOW_EMPTY_PASSWORD=yes -d --rm -p 13306:3306 --rm mysql:8.0
-
+```
+docker run --name bankholiday_mysql -e MYSQL_DATABASE=bank_holiday -e MYSQL_ALLOW_EMPTY_PASSWORD=yes -d --rm -p 13306:3306 --rm mysql:8.0
+```
+Rabbit MQ
+```
+docker run -d --rm -p 5672:5672 -p 15672:15672 --name bankholiday_rabbitmq rabbitmq:3-management
+```
 Application can be run with
-> ./mvnw clean package
-> 
->./mvnw spring-boot:run
+```
+./mvnw clean package
+./mvnw spring-boot:run
+```
 
-Now you can also run
-> docker-compose build
-> 
-> docker-compose up
-
+Now you can also run (RabbitMq not setup)
+```
+docker-compose build 
+docker-compose up
+```
 ## Access the API
 
 Run http://localhost:8080/bank-holiday-api/fetch-data to seed the database.
@@ -26,8 +33,6 @@ Run http://localhost:8080/bank-holiday-api/fetch-data to seed the database.
   - Set some ttl
   - Actually setup a user
 - Setup job for getting data
-  - Wired in needs to check existing data before saving
-  - Use a message queue
   - Clear cache data if fetching writes something
 - Understand SpringBootTest better
 - Look up 
