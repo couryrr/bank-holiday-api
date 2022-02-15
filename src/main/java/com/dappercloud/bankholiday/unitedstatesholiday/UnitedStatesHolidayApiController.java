@@ -18,6 +18,7 @@ import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -102,9 +103,9 @@ public class UnitedStatesHolidayApiController {
   }
 
   @GetMapping("fetch-data")
-  //@Scheduled(cron = "1 */10 * * * *")
+  @Scheduled(cron = "1 */10 * * * *")
   public HolidayResponse fetchData() throws InterruptedException {
-    var urlString = "https://www.opm.gov/policy-data-oversight/pay-leave/federal-holidays/#url=2022";
+    var urlString = "https://www.opm.gov/policy-data-oversight/pay-leave/federal-holidays";
     logger.info("Fetching Data for united states at: " + urlString);
 
     var response = new HolidayResponse();

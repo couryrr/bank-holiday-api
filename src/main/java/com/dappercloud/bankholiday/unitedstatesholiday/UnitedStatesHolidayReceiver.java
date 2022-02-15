@@ -10,6 +10,7 @@ import javax.xml.bind.DatatypeConverter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -37,8 +38,7 @@ public class UnitedStatesHolidayReceiver {
         logger.error(e.getMessage());
       }
 
-      var optional = repo.findByHash(hash);
-      if(optional.isEmpty()) {
+      try {
         logger.info(it.getName() + " " + it.getDate());
         var entity = new UnitedStatesHolidayEntity();
         entity.setId(it.getId());
@@ -46,15 +46,13 @@ public class UnitedStatesHolidayReceiver {
         entity.setHolidayDate(it.getDate());
         entity.setHolidayYear(it.getYear());
         entity.setHash(hash);
-        entities.add(entity);
+        repo.save(entity);
+      } catch (DataIntegrityViolationException e){
+        logger.error(e.getMessage());
       }
     });
-    if(!entities.isEmpty()) {
-      logger.info(entities.size() + " of " + message.size() + " were added as new.");
-      repo.saveAll(entities);
-    } else {
-      logger.info("No new holidays to add.");
-    }
+
+
     latch.countDown();
   }
 

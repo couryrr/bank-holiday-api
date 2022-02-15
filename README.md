@@ -1,10 +1,12 @@
 # bank-holiday-api
 
-An instance of redis is needed you can run
+The following instances are needed:
+
+Redis
 ```
 docker run --name bankholiday_redis -p 6379:6379 -d --rm redis:6.2-alpine
 ```
-MySql is running on port 13306
+MySql (running on port 13306)
 ```
 docker run --name bankholiday_mysql -e MYSQL_DATABASE=bank_holiday -e MYSQL_ALLOW_EMPTY_PASSWORD=yes -d --rm -p 13306:3306 --rm mysql:8.0
 ```
@@ -18,21 +20,22 @@ Application can be run with
 ./mvnw spring-boot:run
 ```
 
-Now you can also run (RabbitMq not setup)
+A docker-compose file is set up too.
 ```
 docker-compose build 
-docker-compose up
+docker-compose up -d
 ```
 ## Access the API
 
-Run http://localhost:8080/bank-holiday-api/fetch-data to seed the database.
+Using a client like curl or postman call http://localhost:8080/bank-holiday-api/fetch-data 
+to seed the database or wait for a 10-minute mark.
 
 ## Upcoming additions add
 - Persist MySql data
 - Persist redis cache
   - Set some ttl
-  - Actually setup a user
-- Setup job for getting data
+  - Actually set up a user
+- Setup job for getting data :heavy_check_mark:
   - Clear cache data if fetching writes something
 - Understand SpringBootTest better
 - Look up 
@@ -50,6 +53,7 @@ Run http://localhost:8080/bank-holiday-api/fetch-data to seed the database.
 - Redis cache set up annotation is per method so the cache name should be unique
 - Seems like all of spring boots applications get written in the compose or docker file.
 - Mockito mock is not used to create dummy data :( cannot find a good way to do that yet.
+- Remember to set the hostname for connection strings as the docker container name.
 
 ## Observations
 

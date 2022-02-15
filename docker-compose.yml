@@ -13,10 +13,17 @@ services:
       MYSQL_DATABASE: bank_holiday
     ports:
       - "13306:3306"
-  bankholiday:
+  bankholiday_rabbitmq:
+    image: rabbitmq:3-management
+    restart: unless-stopped
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+  bankholiday_application:
     depends_on:
       - bankholiday_mysql
       - bankholiday_redis
+      - bankholiday_rabbitmq
     build:
       context: .
     restart: on-failure
@@ -28,7 +35,11 @@ services:
         "spring.datasource.username": "root",
         "spring.datasource.password": "test1234",
         "spring.cache.type": "redis",
-        "spring.redis.host":"bankholiday_redis"
+        "spring.redis.host":"bankholiday_redis",
+        "spring.rabbitmq.host": "bankholiday_rabbitmq",
+        "spring.rabbitmq.username": "guest",
+        "spring.rabbitmq.password": "guest",
+        "spring.rabbitmq.port": "5672"
       }'
     ports:
       - "8080:8080"

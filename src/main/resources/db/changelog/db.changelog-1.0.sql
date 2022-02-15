@@ -12,3 +12,7 @@ CREATE TABLE IF NOT EXISTS united_states(
 --changeset couryrr:00002
 ALTER TABLE united_states
 ADD COLUMN hash VARCHAR(32);
+
+--changeset couryrr:00003
+ALTER TABLE united_states
+ADD UNIQUE (holiday_name, holiday_date);
