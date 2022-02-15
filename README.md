@@ -31,12 +31,7 @@ Using a client like curl or postman call http://localhost:8080/bank-holiday-api/
 to seed the database or wait for a 10-minute mark.
 
 ## Upcoming additions add
-- Persist MySql data
-- Persist redis cache
-  - Set some ttl
-  - Actually set up a user
-- Setup job for getting data :heavy_check_mark:
-  - Clear cache data if fetching writes something
+Redis cache set up a user
 - Understand SpringBootTest better
 - Look up 
   - Canadian Holidays
