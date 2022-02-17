@@ -25,7 +25,7 @@ A docker-compose file is set up too.
 docker-compose build 
 docker-compose up -d
 
-sh ./local-dev.sh # This will build and restart
+sh ./docker-dev.sh # This will build and restart
                   # app in docker
 ```
 ## Access the API
