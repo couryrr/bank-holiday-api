@@ -24,6 +24,9 @@ A docker-compose file is set up too.
 ```
 docker-compose build 
 docker-compose up -d
+
+sh ./local-dev.sh # This will build and restart
+                  # app in docker
 ```
 ## Access the API
 
@@ -31,14 +34,14 @@ Using a client like curl or postman call http://localhost:8080/bank-holiday-api/
 to seed the database or wait for a 10-minute mark.
 
 ## Upcoming additions add
-Redis cache set up a user
 - Understand SpringBootTest better
 - Look up 
   - Canadian Holidays
   - European Holidays
-- Store the env settings better
 - Swagger :upside_down_face:
 - GitHub Actions
+- Setup env for server
+- Update application.properties with all env variable
 
 ## Lessons Learned
 - When using docker the port that the docker container uses is the actual port not the forwarded

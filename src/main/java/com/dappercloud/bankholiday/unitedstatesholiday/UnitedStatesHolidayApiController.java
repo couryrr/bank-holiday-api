@@ -167,8 +167,7 @@ public class UnitedStatesHolidayApiController {
 
   @GetMapping("send-message")
   public void sendMessage() throws InterruptedException {
-    System.out.println("Sending message...");
-    rabbitTemplate.convertAndSend(topicExchangeName, routingKey, "Hello from RabbitMQ!");
-    unitedStatesHolidayReceiver.getLatch().await(10000, TimeUnit.MILLISECONDS);
+    System.out.println("Not Sending message!");
+
   }
 }
