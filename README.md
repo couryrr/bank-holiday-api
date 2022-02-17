@@ -4,7 +4,7 @@ The following instances are needed:
 
 Redis
 ```
-docker run --name bankholiday_redis -p 6379:6379 -d --rm redis:6.2-alpine
+docker run --name bankholiday_redis -p 16379:6379 -d --rm redis:6.2-alpine
 ```
 MySql (running on port 13306)
 ```
@@ -12,7 +12,7 @@ docker run --name bankholiday_mysql -e MYSQL_DATABASE=bank_holiday -e MYSQL_ALLO
 ```
 Rabbit MQ
 ```
-docker run -d --rm -p 5672:5672 -p 15672:15672 --name bankholiday_rabbitmq rabbitmq:3-management
+docker run -d --rm -p 25672:5672 -p 35672:15672 --name bankholiday_rabbitmq rabbitmq:3-management
 ```
 Application can be run with
 ```
@@ -41,7 +41,6 @@ to seed the database or wait for a 10-minute mark.
 - Swagger :upside_down_face:
 - GitHub Actions
 - Setup env for server
-- Update application.properties with all env variable
 
 ## Lessons Learned
 - When using docker the port that the docker container uses is the actual port not the forwarded
