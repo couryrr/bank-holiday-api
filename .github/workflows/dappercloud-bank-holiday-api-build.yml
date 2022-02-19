@@ -1,4 +1,4 @@
-name: Build Dappercloud Site API
+name: Build Dappercloud Bank Holiday API
 on:
   push:
     branches:
