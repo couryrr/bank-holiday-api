@@ -2,59 +2,15 @@ version: "3.9"
 services:
   bankholiday_redis:
     image: redis:6.2-alpine
-    restart: unless-stopped
-    command: >
-      --requirepass ${REDIS_PASSWORD}
-    ports:
-      - "6379:6379"
   bankholiday_mysql:
     image: mysql:8.0
-    restart: unless-stopped
-    environment:
-      MYSQL_USER: ${MYSQL_USER}
-      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
-      MYSQL_DATABASE: bank_holiday
-      MYSQL_RANDOM_ROOT_PASSWORD: ${MYSQL_RANDOM_ROOT_PASSWORD}
-    ports:
-      - "13306:3306"
   bankholiday_rabbitmq:
     image: rabbitmq:3-management
-    restart: unless-stopped
-    environment:
-      RABBITMQ_DEFAULT_USER: ${RABBITMQ_DEFAULT_USER}
-      RABBITMQ_DEFAULT_PASS: ${RABBITMQ_DEFAULT_PASS}
-    ports:
-      - "15672:15672"
-      - "5672:5672"
   bankholiday_application:
     depends_on:
       - bankholiday_mysql
       - bankholiday_redis
       - bankholiday_rabbitmq
-    build:
-      context: .
-    restart: on-failure
-    environment:
-      SERVER_SERVLET_CONTEXT_PATH: ${SERVER_SERVLET_CONTEXT_PATH}
-      JAVA_TOOL_OPTIONS: -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005
-      MYSQL_USER: ${MYSQL_USER}
-      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
-      MYSQL_RANDOM_ROOT_PASSWORD: ${MYSQL_RANDOM_ROOT_PASSWORD}
-      MYSQL_DATABASE: ${MYSQL_DATABASE}
-      SPRING_DATASOURCE_URL: ${SPRING_DATASOURCE_URL}
-      SPRING_DATASOURCE_USERNAME: ${MYSQL_USER}
-      SPRING_DATASOURCE_PASSWORD: ${MYSQL_PASSWORD}
-      SPRING_DATASOURCE_DRIVER_CLASS_NAME: ${SPRING_DATASOURCE_DRIVER_CLASS_NAME}
-      SPRING_CACHE_TYPE: ${SPRING_CACHE_TYPE}
-      SPRING_REDIS_HOST: ${SPRING_REDIS_HOST}
-      SPRING_REDIS_PORT: ${SPRING_REDIS_PORT}
-      SPRING_REDIS_PASSWORD: ${REDIS_PASSWORD}
-      SPRING_RABBITMQ_HOST: ${SPRING_RABBITMQ_HOST}
-      SPRING_RABBITMQ_USERNAME: ${RABBITMQ_DEFAULT_USER}
-      SPRING_RABBITMQ_PASSWORD: ${RABBITMQ_DEFAULT_PASS}
-      SPRING_RABBITMQ_PORT: ${SPRING_RABBITMQ_PORT}
-      SPRINGDOC_SWAGGER_UI_ENABLED: "TRUE"
-    ports:
-      - "8080:8080"
-      - "5005:5005"
+    image: ghcr.io/couryrr/bank-holiday-api:main
+
 

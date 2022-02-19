@@ -24,8 +24,6 @@ jobs:
           restore-keys: ${{ runner.os }}-m2
       - name: Download Dependencies
         run: mvn package --no-transfer-progress
-      - name: see where I am
-        run: ls target
       - name: Log in to the Container registry
         uses: docker/login-action@v1
         with:
