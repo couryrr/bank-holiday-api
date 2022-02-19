@@ -2,7 +2,7 @@ name: Build Dappercloud Bank Holiday API
 on:
   push:
     branches:
-     - master
+     - main
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
