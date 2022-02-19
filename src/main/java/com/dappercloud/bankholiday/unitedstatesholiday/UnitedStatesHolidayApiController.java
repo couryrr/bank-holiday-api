@@ -165,9 +165,4 @@ public class UnitedStatesHolidayApiController {
     return response;
   }
 
-  @GetMapping("send-message")
-  public void sendMessage() throws InterruptedException {
-    System.out.println("Not Sending message!");
-
-  }
 }

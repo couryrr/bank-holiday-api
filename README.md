@@ -38,7 +38,6 @@ to seed the database or wait for a 10-minute mark.
 - Look up 
   - Canadian Holidays
   - European Holidays
-- Swagger :upside_down_face:
 - GitHub Actions
 - Setup env for server
 
