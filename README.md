@@ -31,11 +31,11 @@ sh ./docker-dev.sh # This will build and restart
 ## Access the API
 
 Using a client like curl or postman call http://localhost:8080/bank-holiday-api/fetch-data 
-to seed the database or wait for a 10-minute mark.
+to seed the database or wait for a 6-month mark.
 
 ## Upcoming additions add
-- Understand SpringBootTest better
-- Look up 
+- Understand SpringBootTest better (Moving to another project)
+- Look up (Later date) 
   - Canadian Holidays
   - European Holidays
 - GitHub Actions
@@ -47,7 +47,7 @@ to seed the database or wait for a 10-minute mark.
     - MySql workbench uses 13306 on my local
     - Spring boot application in docker uses 3306 for the connection string
 - Redis cache set up annotation is per method so the cache name should be unique
-- Seems like all of spring boots applications get written in the compose or docker file.
+- Seems like all of spring boot applications get written in the compose or docker file.
 - Mockito mock is not used to create dummy data :( cannot find a good way to do that yet.
 - Remember to set the hostname for connection strings as the docker container name.
 
