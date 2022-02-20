@@ -38,7 +38,6 @@ to seed the database or wait for a 6-month mark.
 - Look up (Later date) 
   - Canadian Holidays
   - European Holidays
-- GitHub Actions
 - Setup env for server
 
 ## Lessons Learned
@@ -50,6 +49,12 @@ to seed the database or wait for a 6-month mark.
 - Seems like all of spring boot applications get written in the compose or docker file.
 - Mockito mock is not used to create dummy data :( cannot find a good way to do that yet.
 - Remember to set the hostname for connection strings as the docker container name.
+- docker can set a context for what server to use it on. Docker compose can do something similar
+  with DOCKER_HOST. Makes deploying to remote a bit better
+  - Need to look at the --no-deps seems to not work at least in docker compose
+  - Need to checkout how to scale.
+- docker compose yml can be over ridden with additional files
+- Testing a github action is harsh. Still not sure it is setup the best :(
 
 ## Observations
 

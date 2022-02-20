@@ -105,7 +105,7 @@ public class UnitedStatesHolidayApiController {
   }
 
   @GetMapping("fetch-data")
-  @Scheduled(cron = "1 */10 * * * *")
+  @Scheduled(cron = "0 0 16 1 1/7 ?")
   @Caching(evict = {
       @CacheEvict(value = "UnitedStatesFederalHolidayByIdCache", allEntries = true),
       @CacheEvict(value = "UnitedStatesFederalHolidayByHolidayYearCache", allEntries = true),

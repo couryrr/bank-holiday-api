@@ -38,4 +38,4 @@ services:
       SPRING_RABBITMQ_PORT: ${SPRING_RABBITMQ_PORT}
       SPRINGDOC_SWAGGER_UI_ENABLED: "TRUE"
     ports:
-      - "10080:8080"
+      - "10081:8080"
