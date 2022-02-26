@@ -104,7 +104,7 @@ public class UnitedStatesHolidayApiController {
     return response;
   }
 
-  //@GetMapping("fetch-data")
+  @GetMapping("fetch-data")
   //Mid-night on the first day of any month any day
   @Scheduled(cron = "0 0 0 1 * *")
   @Caching(evict = {
